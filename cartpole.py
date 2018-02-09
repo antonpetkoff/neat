@@ -1,18 +1,20 @@
 import gym
-env = gym.make('Asteroids-ram-v0')
+import time
+env = gym.make('CartPole-v0')
 
 # print(gym.envs.registry.all())
 
 for episode in range(20):
     observation = env.reset()
     done = False
-    time = 0
+    timestamp = 0
+
     while not done:
-        time = time + 1
+        timestamp = timestamp + 1
         env.render()
         print(observation)
         action = env.action_space.sample()
         observation, reward, done, info = env.step(action)
         print("Reward: {}".format(reward))
         if done:
-            print("Episode finished after {} timestamps".format(time + 1))
+            print("Episode finished after {} timestamps".format(timestamp))
